@@ -1,4 +1,14 @@
 # schemas.py
+from dataclasses import Field
+
+from pydantic import BaseModel
+
+#Min ref data
+default_user = {
+    "employeeId": "6764b549dfcd976d834c27d9" # This can be passed in the request URL like ?userId=123
+}
+###############################################
+
 authLogin_payload = {
     "email": "test@example.com",
     "password": "password123"
@@ -51,6 +61,16 @@ createTicket_payload = {
     }
 }
 
-default_user = {
-    "employeeId": "6764b549dfcd976d834c27d9" # This can be passed in the request URL like ?userId=123
+addServices_payload = {
+  "serviceType": "Engine",
+  "serviceDetails": "Ignition Coils",
+  "partsRequired": [
+    {
+      "partName": "Coil Pack",
+      "partQty": 6,
+      "partPrice": 55
+    }
+  ]
 }
+
+
