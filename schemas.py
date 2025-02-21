@@ -69,6 +69,11 @@ addServices_payload = {
       "partName": "Coil Pack",
       "partQty": 6,
       "partPrice": 55
+    },
+    {
+      "partName": "Misc",
+      "partQty": 4,
+      "partPrice": 12
     }
   ]
 }
