@@ -1,11 +1,14 @@
 # schemas.py
 from dataclasses import Field
-
 from pydantic import BaseModel
+from faker import Faker
 
-#Min ref data
+# instantiate faker
+faker = Faker()
+
+# Min ref data
 default_user = {
-    "employeeId": "6764b549dfcd976d834c27d9" # This can be passed in the request URL like ?userId=123
+    "employeeId": "6764b549dfcd976d834c27d9"  # This can be passed in the request URL like ?userId=123
 }
 ###############################################
 
@@ -14,14 +17,26 @@ authLogin_payload = {
     "password": "password123"
 }
 
-authRegister_payload = {
-    "firstName": "Zen",
-    "lastName": "Skywalker",
-    "phoneNumber": "773-804-8920",
-    "address": "2353 W Congress Parkway Unit 2 Chicago, IL 60612",
-    "email": "zen@skywalkerlabs.com",
-    "password": "password123"
-}
+
+# authRegister_payload = {
+#    "first_name": "Zen",
+#    "last_name": "Skywalker",
+#    "phone_number": "773-804-8920",
+#    "address": "2353 W Congress Parkway Unit 2 Chicago, IL 60612",
+#    "email": "zen@skywalkerlabs.com",
+#    "password": "password123"
+# }
+
+def auth_register_payload():
+    return {
+        "first_name": faker.first_name(),
+        "last_name": faker.last_name(),
+        "phone_number": faker.phone_number(),
+        "address": faker.address(),
+        "email": faker.email(),
+        "password": faker.password()
+    }
+
 
 createTicket_payload = {
     "dateTime": "2025-02-15 12:35 AM",
@@ -62,20 +77,18 @@ createTicket_payload = {
 }
 
 addServices_payload = {
-  "serviceType": "Engine",
-  "serviceDetails": "Ignition Coils",
-  "partsRequired": [
-    {
-      "partName": "Coil Pack",
-      "partQty": 6,
-      "partPrice": 55
-    },
-    {
-      "partName": "Misc",
-      "partQty": 4,
-      "partPrice": 12
-    }
-  ]
+    "serviceType": "Engine",
+    "serviceDetails": "Ignition Coils",
+    "partsRequired": [
+        {
+            "partName": "Coil Pack",
+            "partQty": 6,
+            "partPrice": 55
+        },
+        {
+            "partName": "Misc",
+            "partQty": 4,
+            "partPrice": 12
+        }
+    ]
 }
-
-
